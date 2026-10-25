@@ -9,19 +9,78 @@
   <link rel="stylesheet" href="assets/style.css">
 
   <style>
-    /* Recent posts: two rows of two cards on desktop */
-    #home-posts {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-    }
+    
+/* Centered section headings with underline */
+.section-head {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
 
-    /* Publication tile gallery */
-    .publication-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 20px;
-    }
+.section-head h2 {
+  margin-bottom: 10px;
+}
+
+.section-head > div {
+  position: relative;
+}
+
+.section-head > div::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 3px;
+  background: #24476a;
+  border-radius: 3px;
+  margin: 12px auto 0;
+}
+
+/* Four blog cards per row on desktop */
+#home-posts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+@media (max-width: 560px) {
+  #home-posts {
+    grid-template-columns: 1fr;
+  }
+}
+
+    
+/* Horizontal publication carousel */
+.publication-carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 60px) / 4);
+  gap: 20px;
+  overflow-x: auto;
+  padding: 4px 4px 18px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+}
+
+.publication-carousel .publication-tile {
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+@media (max-width: 900px) {
+  .publication-carousel {
+    grid-auto-columns: calc((100% - 20px) / 2);
+  }
+}
+
+@media (max-width: 560px) {
+  .publication-carousel {
+    grid-auto-columns: 85%;
+  }
+}
+
 
     .publication-tile {
       position: relative;
@@ -122,10 +181,6 @@
         grid-template-columns: 1fr;
       }
 
-      .publication-grid {
-        grid-template-columns: 1fr;
-      }
-
       .publication-tile {
         aspect-ratio: 1 / 0.85;
       }
@@ -164,7 +219,7 @@
     <section>
       <div class="section-head">
         <div>
-          <h2>Recent Posts</h2>
+          <h2>Blogs</h2>
         </div>
         <a class="button" href="blog.html">All posts →</a>
       </div>
@@ -176,12 +231,12 @@
     <section>
       <div class="section-head">
         <div>
-          <h2>Recent Publications</h2>
+          <h2>Publications</h2>
         </div>
         <a class="button" href="publications.html">All publications →</a>
       </div>
 
-      <div class="publication-grid">
+      <div class="publication-carousel">
 
         <a
           class="publication-tile"
@@ -248,7 +303,7 @@
 
   <script src="assets/site.js"></script>
   <script>
-    renderCards('home-posts', 4);
+    renderCards('home-posts');
   </script>
 </body>
 </html>
