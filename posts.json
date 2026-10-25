@@ -3,7 +3,7 @@
     "title": "How oncolytic viruses turn tumors into immune targets",
     "category": "Cancer Biology",
     "summary": "A short introduction to how oncolytic viruses selectively infect or kill tumor cells and can also help alert the immune system to cancer.",
-    "symbol": "OV",
+    "symbol": "Oncolytic Virus",
     "body": "<p>Oncolytic viruses are designed or selected to preferentially replicate in cancer cells. Their effects can extend beyond direct tumor-cell killing: infection may release tumor antigens and inflammatory signals that help immune cells recognize the tumor. The outcome depends on the virus, tumor biology, pre-existing antiviral immunity, and the surrounding tumor microenvironment. A key challenge is balancing antiviral clearance with enough viral activity to generate a useful antitumor response.</p>",
     "slug": "post-1",
     "date": "2026-10-24"
