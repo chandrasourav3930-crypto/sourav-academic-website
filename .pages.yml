@@ -1,0 +1,73 @@
+
+media:
+  input: assets
+  output: /assets
+  extensions:
+    - jpg
+    - jpeg
+    - png
+    - webp
+    - gif
+  categories:
+    - image
+
+content:
+  - name: blog_posts
+    label: Blog Posts
+    type: file
+    path: posts.json
+    format: json
+    list: true
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+
+      - name: category
+        label: Category
+        type: string
+        required: true
+
+      - name: summary
+        label: Summary
+        type: text
+        required: true
+
+      - name: symbol
+        label: Short Symbol
+        type: string
+
+      - name: body
+        label: Article Body
+        type: rich-text
+        options:
+          format: html
+          media: false
+
+      - name: slug
+        label: URL Slug
+        type: string
+        required: true
+        pattern: "^[a-z0-9-]+$"
+
+      - name: cover
+        label: Cover Image
+        type: image
+        options:
+          path: assets
+          extensions:
+            - jpg
+            - jpeg
+            - png
+            - webp
+            - gif
+
+      - name: date
+        label: Publication Date
+        type: date
+        required: true
+
+settings:
+  content:
+    merge: true
