@@ -4,9 +4,8 @@
     "category": "Cancer Biology",
     "summary": "A short introduction to how oncolytic viruses selectively infect or kill tumor cells and can also help alert the immune system to cancer.",
     "symbol": "OV",
-    "body": "Oncolytic viruses are designed or selected to preferentially replicate in cancer cells. Their effects can extend beyond direct tumor-cell killing: infection may release tumor antigens and inflammatory signals that help immune cells recognize the tumor. The outcome depends on the virus, tumor biology, pre-existing antiviral immunity, and the surrounding tumor microenvironment. A key challenge is balancing antiviral clearance with enough viral activity to generate a useful antitumor response.",
+    "body": "<p>Oncolytic viruses are designed or selected to preferentially replicate in cancer cells. Their effects can extend beyond direct tumor-cell killing: infection may release tumor antigens and inflammatory signals that help immune cells recognize the tumor. The outcome depends on the virus, tumor biology, pre-existing antiviral immunity, and the surrounding tumor microenvironment. A key challenge is balancing antiviral clearance with enough viral activity to generate a useful antitumor response.</p>",
     "slug": "post-1",
-    "cover": "",
     "date": "2026-10-24"
   },
   {
@@ -14,9 +13,8 @@
     "category": "Neuro-oncology",
     "summary": "Glioblastoma combines invasive growth, cellular diversity, and a tumor microenvironment that can limit therapy.",
     "symbol": "GBM",
-    "body": "Glioblastoma is an aggressive brain tumor with substantial variation between cells within the same tumor. Some tumor cells infiltrate surrounding brain tissue, making complete surgical removal difficult. The tumor microenvironment can also suppress immune responses, while treatment-resistant cell states may survive standard therapy. These challenges motivate research into combinations that address both tumor-cell biology and antitumor immunity.",
+    "body": "<p>Glioblastoma is an aggressive brain tumor with substantial variation between cells within the same tumor. Some tumor cells infiltrate surrounding brain tissue, making complete surgical removal difficult. The tumor microenvironment can also suppress immune responses, while treatment-resistant cell states may survive standard therapy. These challenges motivate research into combinations that address both tumor-cell biology and antitumor immunity.</p>",
     "slug": "post-2",
-    "cover": "",
     "date": "2026-10-24"
   },
   {
@@ -24,9 +22,8 @@
     "category": "Genomics",
     "summary": "A practical overview of how RNA-seq can reveal gene-expression patterns and generate testable hypotheses.",
     "symbol": "RNA",
-    "body": "RNA sequencing measures RNA-derived sequence reads that can be mapped to a reference genome or transcriptome and summarized as gene-level counts. Statistical analysis can identify expression differences between carefully designed groups. Enrichment analyses then help interpret coordinated changes across pathways or gene sets. Results are strongest when biological replication, appropriate normalization, multiple-testing correction, and independent validation are considered together.",
+    "body": "<p>RNA sequencing measures RNA-derived sequence reads that can be mapped to a reference genome or transcriptome and summarized as gene-level counts. Statistical analysis can identify expression differences between carefully designed groups. Enrichment analyses then help interpret coordinated changes across pathways or gene sets. Results are strongest when biological replication, appropriate normalization, multiple-testing correction, and independent validation are considered together.</p>",
     "slug": "post-3",
-    "cover": "",
     "date": "2026-10-24"
   },
   {
@@ -34,9 +31,8 @@
     "category": "Immunology",
     "summary": "Tumors are not just cancer cells; they are ecosystems of immune, stromal, and vascular components.",
     "symbol": "TME",
-    "body": "The tumor microenvironment includes cancer cells, immune cells, fibroblasts, blood vessels, extracellular matrix, and signaling molecules. Some components support immune attack, while others can restrict T-cell entry or function. Describing a tumor as immune-inflamed, excluded, or desert-like is a useful simplification, but real tumors can contain several states at once. Understanding these relationships can help researchers design therapies that recruit or activate antitumor immunity.",
+    "body": "<p>The tumor microenvironment includes cancer cells, immune cells, fibroblasts, blood vessels, extracellular matrix, and signaling molecules. Some components support immune attack, while others can restrict T-cell entry or function. Describing a tumor as immune-inflamed, excluded, or desert-like is a useful simplification, but real tumors can contain several states at once. Understanding these relationships can help researchers design therapies that recruit or activate antitumor immunity.</p>",
     "slug": "post-4",
-    "cover": "",
     "date": "2026-10-24"
   },
   {
@@ -44,9 +40,8 @@
     "category": "Microbiology",
     "summary": "Antimicrobial resistance connects human health, animal health, food systems, and the environment.",
     "symbol": "AMR",
-    "body": "Antimicrobial resistance can emerge and spread across connected human, animal, and environmental settings. Antibiotic use creates selection pressure, while movement of people, animals, food, water, and bacteria can move resistant organisms or resistance genes between settings. A One Health approach combines surveillance, responsible antimicrobial use, infection prevention, and environmental management rather than treating each sector in isolation.",
+    "body": "<p>Antimicrobial resistance can emerge and spread across connected human, animal, and environmental settings. Antibiotic use creates selection pressure, while movement of people, animals, food, water, and bacteria can move resistant organisms or resistance genes between settings. A One Health approach combines surveillance, responsible antimicrobial use, infection prevention, and environmental management rather than treating each sector in isolation.</p>",
     "slug": "post-5",
-    "cover": "",
     "date": "2026-10-24"
   },
   {
@@ -54,9 +49,8 @@
     "category": "Immunology",
     "summary": "Vaccines prepare the immune system to respond more effectively to a future encounter with a pathogen or antigen.",
     "symbol": "VAX",
-    "body": "Vaccines expose the immune system to an antigen or instructions for making one, in a form intended to generate protective immunity without causing the target disease. Antigen-presenting cells help activate lymphocytes, and some activated B and T cells develop into long-lived memory populations. The strength and duration of protection depend on the vaccine platform, antigen, host, and pathogen.",
+    "body": "<p>Vaccines expose the immune system to an antigen or instructions for making one, in a form intended to generate protective immunity without causing the target disease. Antigen-presenting cells help activate lymphocytes, and some activated B and T cells develop into long-lived memory populations. The strength and duration of protection depend on the vaccine platform, antigen, host, and pathogen.</p>",
     "slug": "post-6",
-    "cover": "",
     "date": "2026-10-24"
   },
   {
@@ -64,9 +58,8 @@
     "category": "Molecular Biology",
     "summary": "CRISPR-based systems let researchers target particular DNA sequences to study gene function and more.",
     "symbol": "CRISPR",
-    "body": "CRISPR-based tools use guide molecules to direct a protein, such as Cas9, to a selected nucleic-acid sequence. Depending on the system, researchers can disrupt a gene, alter a sequence, or regulate gene expression. Careful controls are essential: editing efficiency varies, unintended changes are possible, and observed phenotypes should be validated using independent methods.",
+    "body": "<p>CRISPR-based tools use guide molecules to direct a protein, such as Cas9, to a selected nucleic-acid sequence. Depending on the system, researchers can disrupt a gene, alter a sequence, or regulate gene expression. Careful controls are essential: editing efficiency varies, unintended changes are possible, and observed phenotypes should be validated using independent methods.</p>",
     "slug": "post-7",
-    "cover": "",
     "date": "2026-10-24"
   },
   {
@@ -74,9 +67,8 @@
     "category": "Research Practice",
     "summary": "Good figures make the experiment, comparison, uncertainty, and biological message easier to evaluate.",
     "symbol": "DATA",
-    "body": "A clear scientific figure should make the experimental groups, sample sizes, measurements, and statistical comparisons understandable without requiring readers to reconstruct the analysis. Choose a plot that matches the data, show individual observations when useful, and report uncertainty honestly. Keep the figure legend specific about methods and tests. Reproducible figures also depend on preserving analysis scripts, raw data, and a record of processing decisions.",
+    "body": "<p>A clear scientific figure should make the experimental groups, sample sizes, measurements, and statistical comparisons understandable without requiring readers to reconstruct the analysis. Choose a plot that matches the data, show individual observations when useful, and report uncertainty honestly. Keep the figure legend specific about methods and tests. Reproducible figures also depend on preserving analysis scripts, raw data, and a record of processing decisions.</p>",
     "slug": "post-8",
-    "cover": "",
     "date": "2026-10-24"
   }
 ]
