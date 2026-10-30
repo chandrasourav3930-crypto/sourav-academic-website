@@ -4,192 +4,539 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Sourav Chakraborty academic portfolio, research, publications, and science blog">
+  <meta name="description" content="Sourav Chakraborty academic portfolio, research, publications, collaborations, and science blog">
   <title>Home | Sourav Chakraborty</title>
   <link rel="stylesheet" href="assets/style.css">
 
   <style>
-    
-/* Centered section headings with underline */
-.section-head {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 28px;
-}
+    /* =====================================
+       HOMEPAGE LAYOUT
+    ===================================== */
 
-.section-head h2 {
-  margin-bottom: 10px;
-}
-
-.section-head > div {
-  position: relative;
-}
-
-.section-head > div::after {
-  content: "";
-  display: block;
-  width: 64px;
-  height: 3px;
-  background: #24476a;
-  border-radius: 3px;
-  margin: 12px auto 0;
-}
-
-/* Four blog cards per row on desktop */
-#home-posts {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 22px;
-  margin-bottom: 40px;
-}
-
-@media (max-width: 560px) {
-  #home-posts {
-    grid-template-columns: 1fr;
-  }
-}
-
-    
-/* Horizontal publication carousel */
-.publication-carousel {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: calc((100% - 60px) / 4);
-  gap: 20px;
-  overflow-x: auto;
-  padding: 4px 4px 18px;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-}
-
-.publication-carousel .publication-tile {
-  min-width: 0;
-  scroll-snap-align: start;
-}
-
-@media (max-width: 900px) {
-  .publication-carousel {
-    grid-auto-columns: calc((100% - 20px) / 2);
-  }
-}
-
-@media (max-width: 560px) {
-  .publication-carousel {
-    grid-auto-columns: 85%;
-  }
-}
-
-
-    .publication-tile {
-      position: relative;
-      display: flex;
-      aspect-ratio: 1 / 1;
-      align-items: flex-start;
-      padding: 22px;
-      overflow: hidden;
-      isolation: isolate;
-      border-radius: 12px;
-      color: #fff;
-      text-decoration: none;
-      background: #102b4e;
-      box-shadow: 0 5px 18px rgba(16, 43, 78, 0.12);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    .home-wrap {
+      width: calc(100% - 48px);
+      max-width: 1550px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    /* Blurred background image */
-    .publication-tile::before {
+    .home-section {
+      margin-top: 48px;
+      margin-bottom: 55px;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+    }
+
+    .section-heading::after {
       content: "";
-      position: absolute;
-      z-index: -2;
-      inset: -8px;
-      background-image: var(--publication-image);
-      background-size: cover;
-      background-position: center;
-      filter: blur(3px);
-      transform: scale(1.04);
-      transition: filter 0.25s ease, transform 0.35s ease;
-    }
-
-    /* Dark overlay improves title readability */
-    .publication-tile::after {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(5, 24, 51, 0.88) 0%,
-        rgba(5, 24, 51, 0.53) 58%,
-        rgba(5, 24, 51, 0.30) 100%
-      );
-    }
-
-    .publication-tile:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 26px rgba(16, 43, 78, 0.2);
-    }
-
-    .publication-tile:hover::before {
-      filter: blur(1px);
-      transform: scale(1.08);
-    }
-
-    .publication-tile:focus-visible {
-      outline: 3px solid #4c8bf5;
-      outline-offset: 4px;
-    }
-
-    .publication-tile-content {
-      width: 100%;
-    }
-
-    .publication-tile h3 {
-      margin: 0 0 14px;
-      color: #fff;
-      font-size: clamp(15px, 1.3vw, 20px);
-      line-height: 1.4;
-      font-weight: 700;
-      overflow-wrap: anywhere;
-    }
-
-    .publication-tile .publication-journal {
       display: block;
-      color: rgba(255, 255, 255, 0.88);
+      width: 65px;
+      height: 3px;
+      background: #24476a;
+      border-radius: 3px;
+      margin: 12px auto 0;
+    }
+
+    .section-subtitle {
+      color: #687789;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .section-link {
+      display: inline-block;
+      color: #24476a;
+      font-size: 13px;
+      font-weight: 650;
+      text-decoration: none;
+      margin-top: 14px;
+    }
+
+    .section-link:hover {
+      text-decoration: underline;
+    }
+
+    /* =====================================
+       SECTION 1: THREE-COLUMN DASHBOARD
+    ===================================== */
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr)
+                             minmax(0, 1.25fr)
+                             minmax(0, 0.9fr);
+      gap: 25px;
+      align-items: stretch;
+    }
+
+    .dashboard-panel {
+      min-width: 0;
+      padding: 23px;
+      background: #ffffff;
+      border: 1px solid #e3e9ef;
+      border-radius: 13px;
+      box-shadow: 0 4px 18px rgba(20, 45, 75, 0.055);
+    }
+
+    .panel-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 14px;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #e8edf2;
+    }
+
+    .panel-heading h2 {
+      font-size: 19px;
+      margin: 0;
+      color: #183653;
+    }
+
+    .panel-count {
+      color: #718096;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    /* Blog cards */
+
+    #home-posts {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 13px;
+    }
+
+    #home-posts > * {
+      min-width: 0;
+    }
+
+    .dashboard-panel .section-link {
+      margin-top: 20px;
+    }
+
+    /* =====================================
+       MIDDLE: RESEARCHER PROFILE
+    ===================================== */
+
+    .profile-panel {
+      background: linear-gradient(150deg, #f7fafd, #ffffff 70%);
+      text-align: center;
+      padding: 27px;
+    }
+
+    .profile-photo {
+      width: 145px;
+      height: 145px;
+      margin: 2px auto 17px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 5px solid #ffffff;
+      box-shadow: 0 3px 17px rgba(20, 45, 75, 0.14);
+      background: #e8eef5;
+    }
+
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-photo-placeholder {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6b7e91;
+      font-size: 13px;
+      padding: 12px;
+    }
+
+    .profile-panel h2 {
+      color: #183653;
+      font-size: 24px;
+      margin: 8px 0;
+    }
+
+    .profile-position {
+      color: #365c7e;
+      font-weight: 650;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .profile-institution {
+      color: #687789;
+      font-size: 13px;
+      margin-top: 5px;
+    }
+
+    .profile-description {
+      color: #536477;
+      font-size: 14px;
+      line-height: 1.8;
+      margin: 19px 0;
+      text-align: left;
+    }
+
+    .research-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 17px 0;
+    }
+
+    .research-tag {
+      background: #eaf1f7;
+      color: #24476a;
+      padding: 7px 11px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 650;
+    }
+
+    .profile-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 21px;
+    }
+
+    .profile-links a {
+      color: #ffffff;
+      background: #24476a;
+      text-decoration: none;
+      padding: 9px 13px;
+      border-radius: 6px;
       font-size: 12px;
+      font-weight: 600;
+    }
+
+    .profile-links a:hover {
+      background: #16334f;
+    }
+
+    /* =====================================
+       RECENT PUBLICATIONS
+    ===================================== */
+
+    .recent-publications {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .recent-publication {
+      display: block;
+      padding: 13px 0;
+      border-bottom: 1px solid #e8edf2;
+      text-decoration: none;
+    }
+
+    .recent-publication:last-child {
+      border-bottom: none;
+    }
+
+    .recent-publication h3 {
+      color: #24476a;
+      font-size: 13px;
+      line-height: 1.55;
+      margin: 0 0 5px;
+      font-weight: 700;
+    }
+
+    .recent-publication:hover h3 {
+      color: #477eae;
+      text-decoration: underline;
+    }
+
+    .recent-publication span {
+      display: block;
+      color: #7b8795;
+      font-size: 11px;
       line-height: 1.5;
     }
 
-    .publication-tile .publication-action {
-      display: inline-block;
-      margin-top: 18px;
-      color: #fff;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.03em;
+    /* =====================================
+       SECTION 2: COLLABORATIONS CAROUSEL
+    ===================================== */
+
+    .collaboration-carousel {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 210px;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 5px 4px 18px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
     }
 
-    @media (max-width: 900px) {
-      .publication-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .collaboration-card {
+      min-height: 145px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 20px;
+      background: #ffffff;
+      border: 1px solid #e3e9ef;
+      border-radius: 12px;
+      text-align: center;
+      text-decoration: none;
+      scroll-snap-align: start;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .collaboration-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(20, 45, 75, 0.10);
+    }
+
+    .institution-mark {
+      width: 72px;
+      height: 65px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #24476a;
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      background: #edf3f8;
+      border-radius: 9px;
+    }
+
+    .collaboration-card strong {
+      color: #24476a;
+      font-size: 14px;
+    }
+
+    .collaboration-card span {
+      color: #718096;
+      font-size: 11px;
+    }
+
+    /* =====================================
+       SECTION 3: AWARDS PHOTO CAROUSEL
+    ===================================== */
+
+    .awards-carousel {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 300px;
+      gap: 22px;
+      overflow-x: auto;
+      padding: 5px 4px 18px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+    }
+
+    .award-card {
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid #e3e9ef;
+      border-radius: 12px;
+      scroll-snap-align: start;
+      box-shadow: 0 4px 14px rgba(20, 45, 75, 0.06);
+    }
+
+    .award-photo {
+      height: 195px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #eaf0f6, #dce6ef);
+      color: #62778c;
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+    }
+
+    .award-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .award-info {
+      padding: 17px;
+    }
+
+    .award-info h3 {
+      color: #24476a;
+      font-size: 15px;
+      line-height: 1.5;
+      margin: 0 0 7px;
+    }
+
+    .award-info p {
+      color: #718096;
+      font-size: 12px;
+      margin: 0;
+    }
+
+    /* =====================================
+       SECTION 4: RESEARCH INTERESTS
+    ===================================== */
+
+    .interest-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 23px;
+    }
+
+    .interest-card {
+      padding: 27px 22px;
+      border-radius: 12px;
+      background: #ffffff;
+      border: 1px solid #e3e9ef;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .interest-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(20, 45, 75, 0.09);
+    }
+
+    .interest-icon {
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      background: #eaf1f7;
+      color: #24476a;
+      font-size: 23px;
+    }
+
+    .interest-card h3 {
+      color: #24476a;
+      font-size: 16px;
+      margin: 0 0 9px;
+    }
+
+    .interest-card p {
+      color: #687789;
+      font-size: 13px;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* =====================================
+       CONTACT STRIP
+    ===================================== */
+
+    .contact-strip {
+      margin-top: 45px;
+      margin-bottom: 35px;
+      padding: 35px 25px;
+      text-align: center;
+      border-radius: 13px;
+      background: #edf3f8;
+    }
+
+    .contact-strip h2 {
+      color: #183653;
+      margin: 0 0 10px;
+    }
+
+    .contact-strip p {
+      color: #596b7e;
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 650px;
+      margin: 0 auto 18px;
+    }
+
+    .contact-strip a {
+      display: inline-block;
+      background: #24476a;
+      color: #ffffff;
+      padding: 11px 22px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    /* =====================================
+       RESPONSIVE DESIGN
+    ===================================== */
+
+    @media (max-width: 1050px) {
+      .dashboard {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .profile-panel {
+        grid-column: 1 / -1;
+        grid-row: 1;
+      }
+
+      .dashboard-panel {
+        padding: 19px;
       }
     }
 
-    @media (max-width: 560px) {
-      #home-posts {
+    @media (max-width: 650px) {
+      .home-wrap {
+        width: calc(100% - 28px);
+      }
+
+      .home-section {
+        margin-top: 35px;
+        margin-bottom: 40px;
+      }
+
+      .dashboard {
+        grid-template-columns: 1fr;
+        gap: 17px;
+      }
+
+      .profile-panel {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .interest-grid {
         grid-template-columns: 1fr;
       }
 
-      .publication-tile {
-        aspect-ratio: 1 / 0.85;
+      .collaboration-carousel {
+        grid-auto-columns: 175px;
+      }
+
+      .awards-carousel {
+        grid-auto-columns: 85%;
+      }
+
+      .dashboard-panel {
+        padding: 19px;
       }
     }
+
   </style>
 </head>
 
 <body>
+
+  <!-- EXISTING HEADER: PRESERVED -->
   <header class="hero">
     <div class="wrap hero-inner">
       <div class="eyebrow">Academic portfolio · Science communication</div>
@@ -202,6 +549,7 @@
     </div>
   </header>
 
+  <!-- EXISTING NAVIGATION RIBBON: PRESERVED -->
   <nav class="nav">
     <div class="wrap nav-inner">
       <a class="active" href="index.html">Home</a>
@@ -215,166 +563,337 @@
     </div>
   </nav>
 
-  <main class="wrap">
+  <main class="home-wrap">
 
-    <!-- Recent blog posts -->
-    <section>
-      <div class="section-head">
-        <div>
-          <h2>Blogs</h2>
+    <!-- =================================
+         SECTION 1: THREE-COLUMN DASHBOARD
+    ================================== -->
+
+    <section class="home-section">
+
+      <div class="dashboard">
+
+        <!-- LEFT: RECENT BLOGS -->
+        <div class="dashboard-panel">
+
+          <div class="panel-heading">
+            <h2>Recent Blogs</h2>
+            <span class="panel-count">Latest 5</span>
+          </div>
+
+          <div id="home-posts" class="grid"></div>
+
+          <a class="section-link" href="blog.html">
+            Explore all blogs →
+          </a>
+
         </div>
-        <a class="button" href="blog.html">All posts →</a>
-      </div>
 
-      <div id="home-posts" class="grid"></div>
+
+        <!-- MIDDLE: PROFILE -->
+        <div class="dashboard-panel profile-panel">
+
+          <div class="profile-photo">
+            <!-- Replace this placeholder with your actual portrait.
+                 Example:
+                 <img src="assets/images/profile.jpg"
+                      alt="Sourav Chakraborty">
+            -->
+            <div class="profile-photo-placeholder">
+              Your professional photograph
+            </div>
+          </div>
+
+          <h2>Sourav Chakraborty</h2>
+
+          <p class="profile-position">
+            PhD Researcher in Bioscience
+          </p>
+
+          <p class="profile-institution">
+            Department of Biology<br>
+            North Carolina A&amp;T State University
+          </p>
+
+          <p class="profile-description">
+            I am a bioscience researcher interested in understanding
+            tumor–virus interactions, antiviral resistance, and the
+            development of improved oncolytic virus-based cancer
+            immunotherapies. My research experience also includes
+            antimicrobial resistance and molecular microbiology.
+          </p>
+
+          <div class="research-tags">
+            <span class="research-tag">Glioblastoma</span>
+            <span class="research-tag">Oncolytic Virotherapy</span>
+            <span class="research-tag">Cancer Immunology</span>
+            <span class="research-tag">AMR</span>
+          </div>
+
+          <div class="profile-links">
+            <a href="research.html">Research</a>
+            <a href="https://scholar.google.com/citations?user=HJpumigAAAAJ&amp;hl=en"
+               target="_blank" rel="noopener noreferrer">
+              Google Scholar
+            </a>
+            <a href="contact.html">Contact</a>
+          </div>
+
+        </div>
+
+
+        <!-- RIGHT: RECENT PUBLICATIONS -->
+        <div class="dashboard-panel">
+
+          <div class="panel-heading">
+            <h2>Recent Publications</h2>
+            <span class="panel-count">Latest 5</span>
+          </div>
+
+          <div class="recent-publications">
+
+            <a class="recent-publication"
+               href="https://doi.org/10.3791/72193"
+               target="_blank" rel="noopener noreferrer">
+              <h3>Detection of Intratumoral Immune Cell Antigens in an Immunocompetent Glioblastoma Stem-like Cell Model Using Substrate-Based Immunohistochemistry</h3>
+              <span>Journal of Visualized Experiments · 2026</span>
+            </a>
+
+            <a class="recent-publication"
+               href="https://doi.org/10.1128/mra.00326-26"
+               target="_blank" rel="noopener noreferrer">
+              <h3>Draft Genome Sequences of Escherichia coli Isolated from Fecal Samples of Migratory Birds from Zoonotic Wetland Sources in Bangladesh</h3>
+              <span>Microbiology Resource Announcements · 2026</span>
+            </a>
+
+            <a class="recent-publication"
+               href="https://doi.org/10.1111/1758-2229.70344"
+               target="_blank" rel="noopener noreferrer">
+              <h3>Migratory Birds Facilitate the Spread of Multidrug-Resistant Pathogenic Escherichia coli in Tanguar Haor of Bangladesh</h3>
+              <span>Environmental Microbiology Reports · 2026</span>
+            </a>
+
+            <a class="recent-publication"
+               href="https://doi.org/10.1016/j.ymthe.2026.03.031"
+               target="_blank" rel="noopener noreferrer">
+              <h3>Host Natural IgM Shapes Systemic Efficacy of the Oncolytic Adenovirus</h3>
+              <span>Molecular Therapy · 2026</span>
+            </a>
+
+            <a class="recent-publication"
+               href="https://doi.org/10.1016/j.ymthe.2026.02.048"
+               target="_blank" rel="noopener noreferrer">
+              <h3>CD55-Mediated Immune Evasion Enhances Systemic Oncolytic Virotherapy</h3>
+              <span>Molecular Therapy · 2026</span>
+            </a>
+
+          </div>
+
+          <a class="section-link" href="publications.html">
+            Explore all publications →
+          </a>
+
+        </div>
+
+      </div>
     </section>
 
-    <!-- Recent publications -->
-    <section>
-      <div class="section-head">
-        <div>
-          <h2>Publications</h2>
-        </div>
-        <a class="button" href="publications.html">All publications →</a>
+
+    <!-- =================================
+         SECTION 2: COLLABORATIONS
+    ================================== -->
+
+    <section class="home-section">
+
+      <div class="section-heading">
+        <h2>Research Collaborations</h2>
+        <p class="section-subtitle">
+          Academic institutions and research connections across my scientific journey.
+        </p>
       </div>
-      
-<div class="publication-carousel">
 
-  <!-- 1. JoVE, 2026 -->
-  <a class="publication-tile"
-     href="https://doi.org/10.3791/72193"
-     target="_blank" rel="noopener noreferrer"
-     aria-label="Read Detection of Intratumoral Immune Cell Antigens publication"
-     style="--publication-image: url('https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=800&q=80');">
-    <div class="publication-tile-content">
-      <h3>Detection of Intratumoral Immune Cell Antigens in an Immunocompetent Glioblastoma Stem-like Cell Model Using Substrate-Based Immunohistochemistry</h3>
-      <span class="publication-journal">Journal of Visualized Experiments · 2026</span>
-      <span class="publication-action">VIEW PUBLICATION ↗</span>
-    </div>
-  </a>
+      <div class="collaboration-carousel">
 
-  <!-- 2. Microbiology Resource Announcements, 2026 -->
-  <a class="publication-tile"
-     href="https://doi.org/10.1128/mra.00326-26"
-     target="_blank" rel="noopener noreferrer"
-     aria-label="Read Draft genome sequences of Escherichia coli publication"
-     style="--publication-image: url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=800&q=80');">
-    <div class="publication-tile-content">
-      <h3>Draft Genome Sequences of Escherichia coli Isolated from Fecal Samples of Migratory Birds from Zoonotic Wetland Sources in Bangladesh</h3>
-      <span class="publication-journal">Microbiology Resource Announcements · 2026</span>
-      <span class="publication-action">VIEW PUBLICATION ↗</span>
-    </div>
-  </a>
+        <a class="collaboration-card"
+           href="https://www.bau.edu.bd/"
+           target="_blank" rel="noopener noreferrer">
+          <div class="institution-mark">BAU</div>
+          <strong>Bangladesh Agricultural University</strong>
+          <span>Mymensingh, Bangladesh</span>
+        </a>
 
-  <!-- 3. Environmental Microbiology Reports, 2026 -->
-  <a class="publication-tile"
-     href="https://doi.org/10.1111/1758-2229.70344"
-     target="_blank" rel="noopener noreferrer"
-     aria-label="Read Migratory Birds Facilitate the Spread of Multidrug-Resistant Pathogenic Escherichia coli publication"
-     style="--publication-image: url('https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=800&q=80');">
-    <div class="publication-tile-content">
-      <h3>Migratory Birds Facilitate the Spread of Multidrug-Resistant Pathogenic Escherichia coli in Tanguar Haor of Bangladesh</h3>
-      <span class="publication-journal">Environmental Microbiology Reports · 2026</span>
-      <span class="publication-action">VIEW PUBLICATION ↗</span>
-    </div>
-  </a>
+        <a class="collaboration-card"
+           href="https://www.ncat.edu/"
+           target="_blank" rel="noopener noreferrer">
+          <div class="institution-mark">NC A&amp;T</div>
+          <strong>North Carolina A&amp;T State University</strong>
+          <span>Greensboro, North Carolina</span>
+        </a>
 
-  <!-- 4. Molecular Therapy, 2026 -->
-  <a class="publication-tile"
-     href="https://doi.org/10.1016/j.ymthe.2026.03.031"
-     target="_blank" rel="noopener noreferrer"
-     aria-label="Read Host natural IgM shapes systemic efficacy of the oncolytic adenovirus publication"
-     style="--publication-image: url('https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=800&q=80');">
-    <div class="publication-tile-content">
-      <h3>Host Natural IgM Shapes Systemic Efficacy of the Oncolytic Adenovirus</h3>
-      <span class="publication-journal">Molecular Therapy · 2026</span>
-      <span class="publication-action">VIEW PUBLICATION ↗</span>
-    </div>
-  </a>
+        <a class="collaboration-card"
+           href="https://www.ncsu.edu/"
+           target="_blank" rel="noopener noreferrer">
+          <div class="institution-mark">NC State</div>
+          <strong>North Carolina State University</strong>
+          <span>Raleigh, North Carolina</span>
+        </a>
 
-  <!-- 5. Molecular Therapy, 2026 -->
-  <a class="publication-tile"
-     href="https://doi.org/10.1016/j.ymthe.2026.02.048"
-     target="_blank" rel="noopener noreferrer"
-     aria-label="Read CD55-mediated immune evasion enhances systemic oncolytic virotherapy publication"
-     style="--publication-image: url('https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=80');">
-    <div class="publication-tile-content">
-      <h3>CD55-Mediated Immune Evasion Enhances Systemic Oncolytic Virotherapy</h3>
-      <span class="publication-journal">Molecular Therapy · 2026</span>
-      <span class="publication-action">VIEW PUBLICATION ↗</span>
-    </div>
-  </a>
+        <a class="collaboration-card"
+           href="https://www.unc.edu/"
+           target="_blank" rel="noopener noreferrer">
+          <div class="institution-mark">UNC</div>
+          <strong>UNC Chapel Hill</strong>
+          <span>Chapel Hill, North Carolina</span>
+        </a>
 
-  <!-- 6. Methods and Protocols, 2026 -->
-  <a class="publication-tile"
-     href="https://doi.org/10.3390/mps9030082"
-     target="_blank" rel="noopener noreferrer"
-     aria-label="Read Triple-Survival Stereotactic Brain Surgeries publication"
-     style="--publication-image: url('https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=800&q=80');">
-    <div class="publication-tile-content">
-      <h3>Triple-Survival Stereotactic Brain Surgeries for the Intracranial Injections of Glioblastoma Stem-like Cells and Oncolytic Herpes Simplex Viruses</h3>
-      <span class="publication-journal">Methods and Protocols · 2026</span>
-      <span class="publication-action">VIEW PUBLICATION ↗</span>
-    </div>
-  </a>
+        <a class="collaboration-card"
+           href="https://www.uncg.edu/"
+           target="_blank" rel="noopener noreferrer">
+          <div class="institution-mark">UNCG</div>
+          <strong>UNC Greensboro</strong>
+          <span>Greensboro, North Carolina</span>
+        </a>
 
-  <!-- 7. Discover Applied Sciences, 2025 -->
-  <a class="publication-tile"
-     href="https://doi.org/10.1007/s42452-025-07421-3"
-     target="_blank" rel="noopener noreferrer"
-     aria-label="Read Molecular detection and isolation of foot-and-mouth disease virus publication"
-     style="--publication-image: url('https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=800&q=80');">
-    <div class="publication-tile-content">
-      <h3>Molecular Detection and Isolation of Foot-and-Mouth Disease Virus from Gayal and Crossbreed Cattle in Two Recent Outbreaks in Bangladesh</h3>
-      <span class="publication-journal">Discover Applied Sciences · 2025</span>
-      <span class="publication-action">VIEW PUBLICATION ↗</span>
-    </div>
-  </a>
+      </div>
 
-  <!-- 8. Journal of Advanced Veterinary and Animal Research, 2025 -->
-  <a class="publication-tile"
-     href="https://doi.org/10.5455/javar.2025.l975"
-     target="_blank" rel="noopener noreferrer"
-     aria-label="Read Patterns of multidrug resistance in Salmonella publication"
-     style="--publication-image: url('https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=800&q=80');">
-    <div class="publication-tile-content">
-      <h3>Patterns of Multidrug Resistance in Salmonella Isolated from Commercial Layers During 4 Months of Rearing in Mymensingh, Bangladesh</h3>
-      <span class="publication-journal">Journal of Advanced Veterinary and Animal Research · 2025</span>
-      <span class="publication-action">VIEW PUBLICATION ↗</span>
-    </div>
-  </a>
+    </section>
 
-  <!-- 9. Research in Agriculture, Livestock and Fisheries, 2024 -->
-  <a class="publication-tile"
-     href="https://doi.org/10.3329/ralf.v11i3.78919"
-     target="_blank" rel="noopener noreferrer"
-     aria-label="Read Isolation and identification of causal agents associated with duck mortality publication"
-     style="--publication-image: url('https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=800&q=80');">
-    <div class="publication-tile-content">
-      <h3>Isolation and Identification of Causal Agents Associated with Duck Mortality in Haor Areas of Bangladesh</h3>
-      <span class="publication-journal">Research in Agriculture, Livestock and Fisheries · 2024</span>
-      <span class="publication-action">VIEW PUBLICATION ↗</span>
-    </div>
-  </a>
 
-  <!-- 10. Frontiers in Microbiology, 2024 -->
-  <a class="publication-tile"
-     href="https://doi.org/10.3389/fmicb.2024.1324243"
-     target="_blank" rel="noopener noreferrer"
-     aria-label="Read Characterization, histopathology and immunogenicity of lumpy skin disease virus publication"
-     style="--publication-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80');">
-    <div class="publication-tile-content">
-      <h3>Characterization, Histopathology and Immunogenicity of the Lumpy Skin Disease Virus Isolated During 2019–20 in Bangladesh</h3>
-      <span class="publication-journal">Frontiers in Microbiology · 2024</span>
-      <span class="publication-action">VIEW PUBLICATION ↗</span>
-    </div>
-  </a>
+    <!-- =================================
+         SECTION 3: AWARDS AND PHOTOGRAPHS
+    ================================== -->
 
-</div>
+    <section class="home-section">
+
+      <div class="section-heading">
+        <h2>Awards &amp; Recognition</h2>
+        <p class="section-subtitle">
+          Selected achievements and milestones throughout my academic journey.
+        </p>
+      </div>
+
+      <div class="awards-carousel">
+
+        <article class="award-card">
+          <div class="award-photo">
+            Award photograph will be added here
+          </div>
+          <div class="award-info">
+            <h3>Best Poster — 1st Place</h3>
+            <p>Cloud Computing Education in Data Science, Genomics and Health Symposium · 2026</p>
+          </div>
+        </article>
+
+        <article class="award-card">
+          <div class="award-photo">
+            Award photograph will be added here
+          </div>
+          <div class="award-info">
+            <h3>Best Poster Presenter — 1st Position</h3>
+            <p>National Conference on Food Safety and Health · 2024</p>
+          </div>
+        </article>
+
+        <article class="award-card">
+          <div class="award-photo">
+            Award photograph will be added here
+          </div>
+          <div class="award-info">
+            <h3>Best Poster — 3rd Position</h3>
+            <p>11th One Health Bangladesh Conference · 2023</p>
+          </div>
+        </article>
+
+        <article class="award-card">
+          <div class="award-photo">
+            Award photograph will be added here
+          </div>
+          <div class="award-info">
+            <h3>National Science and Technology Fellowship</h3>
+            <p>Bangladesh · 2024</p>
+          </div>
+        </article>
+
+      </div>
+
+      <div style="text-align:center; margin-top:12px;">
+        <a class="section-link" href="awards.html">
+          View all awards →
+        </a>
+      </div>
+
+    </section>
+
+
+    <!-- =================================
+         SECTION 4: RESEARCH INTERESTS
+    ================================== -->
+
+    <section class="home-section">
+
+      <div class="section-heading">
+        <h2>Research Interests</h2>
+        <p class="section-subtitle">
+          Exploring biological mechanisms and developing approaches to address important health challenges.
+        </p>
+      </div>
+
+      <div class="interest-grid">
+
+        <div class="interest-card">
+          <div class="interest-icon">🧠</div>
+          <h3>Glioblastoma</h3>
+          <p>
+            Investigating glioblastoma biology, cancer stem-like cells,
+            tumor heterogeneity, and the immunosuppressive tumor microenvironment.
+          </p>
+        </div>
+
+        <div class="interest-card">
+          <div class="interest-icon">🧬</div>
+          <h3>Oncolytic Virotherapy</h3>
+          <p>
+            Understanding tumor antiviral responses and exploring
+            engineered oncolytic viruses for improved cancer immunotherapy.
+          </p>
+        </div>
+
+        <div class="interest-card">
+          <div class="interest-icon">🔬</div>
+          <h3>Antimicrobial Resistance</h3>
+          <p>
+            Studying antimicrobial resistance, bacterial virulence,
+            molecular epidemiology, and the dissemination of resistant pathogens.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================
+         CONTACT
+    ================================== -->
+
+    <section class="contact-strip">
+
+      <h2>Let's Connect</h2>
+
+      <p>
+        I welcome opportunities for scientific discussion,
+        academic networking, and research collaboration.
+        Feel free to get in touch.
+      </p>
+
+      <a href="contact.html">Contact Me →</a>
+
     </section>
 
   </main>
 
+
+  <!-- EXISTING FOOTER: PRESERVED -->
   <footer class="footer">
     <div class="wrap footer-inner">
       <span>© Sourav Chakraborty · Academic website</span>
@@ -388,9 +907,13 @@
     </div>
   </footer>
 
+
+  <!-- EXISTING BLOG SCRIPT -->
   <script src="assets/site.js"></script>
+
   <script>
-    renderCards('home-posts');
+    renderCards('home-posts', 5);
   </script>
+
 </body>
 </html>
