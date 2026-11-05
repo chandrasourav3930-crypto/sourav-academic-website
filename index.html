@@ -527,6 +527,40 @@
       font-weight: 650;
     }
 
+          /* =====================================
+       SLIM TOP BANNER
+    ===================================== */
+
+    .hero.hero-slim {
+      padding: 34px 0 30px;
+    }
+
+    .hero-slim .hero-title {
+      font-family: Manrope, sans-serif;
+      font-size: clamp(1.8rem, 4.5vw, 2.7rem);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      line-height: 1.15;
+      margin: 10px 0 8px;
+      color: #ffffff;
+    }
+
+    .hero-slim .hero-sub {
+      max-width: 620px;
+      margin: 0 auto;
+      color: #d5e7e3;
+      font-size: .98rem;
+    }
+
+    .hero-slim .hero-rule {
+      width: 56px;
+      height: 3px;
+      margin: 16px auto 0;
+      border-radius: 3px;
+      background: #a8d8cc;
+    }
+    
+    
     /* =====================================
        RESPONSIVE DESIGN
     ===================================== */
@@ -549,6 +583,14 @@
     @media (max-width: 650px) {
       .home-wrap {
         width: calc(100% - 28px);
+      }
+
+            .hero.hero-slim {
+        padding: 26px 0 22px;
+      }
+
+      .hero-slim .hero-sub {
+        font-size: .88rem;
       }
 
       .home-section {
@@ -612,7 +654,14 @@
 <body>
 
   <!-- EXISTING HEADER: PRESERVED -->
-  
+    <header class="hero hero-slim">
+    <div class="wrap hero-inner">
+      <div class="eyebrow">Science · Research · Communication</div>
+      <div class="hero-title">Academic Portfolio</div>
+      <p class="hero-sub">Research, publications, and science communication</p>
+      <div class="hero-rule"></div>
+    </div>
+  </header>
 
   <!-- EXISTING NAVIGATION RIBBON: PRESERVED -->
   <nav class="nav">
