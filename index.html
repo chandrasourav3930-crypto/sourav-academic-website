@@ -332,60 +332,77 @@
        SECTION 3: AWARDS PHOTO CAROUSEL
     ===================================== */
 
-    .awards-carousel {
-      display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: 300px;
-      gap: 22px;
-      overflow-x: auto;
-      padding: 5px 4px 18px;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: thin;
-    }
+    .awards-viewport {
+  position: relative;
+}
 
-    .award-card {
-      overflow: hidden;
-      background: #ffffff;
-      border: 1px solid #e3e9ef;
-      border-radius: 12px;
-      scroll-snap-align: start;
-      box-shadow: 0 4px 14px rgba(20, 45, 75, 0.06);
-    }
+.awards-carousel {
+  position: relative;
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding: 30px calc(50% - 150px) 40px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
 
-    .award-photo {
-      height: 195px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #eaf0f6, #dce6ef);
-      color: #62778c;
-      text-align: center;
-      padding: 20px;
-      font-size: 13px;
-    }
+.awards-carousel::-webkit-scrollbar {
+  display: none;
+}
 
-    .award-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+.award-card {
+  flex: 0 0 300px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e3e9ef;
+  border-radius: 12px;
+  scroll-snap-align: center;
+  box-shadow: 0 4px 14px rgba(20, 45, 75, 0.06);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  will-change: transform;
+}
 
-    .award-info {
-      padding: 17px;
-    }
+.award-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  margin-top: -22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 4px;
+  background: #ffffff;
+  color: #24476a;
+  border: 1px solid #d5dfe9;
+  border-radius: 50%;
+  box-shadow: 0 4px 14px rgba(20, 45, 75, 0.14);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
 
-    .award-info h3 {
-      color: #24476a;
-      font-size: 15px;
-      line-height: 1.5;
-      margin: 0 0 7px;
-    }
+.award-arrow:hover:not(:disabled) {
+  background: #24476a;
+  color: #ffffff;
+}
 
-    .award-info p {
-      color: #718096;
-      font-size: 12px;
-      margin: 0;
-    }
+.award-arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.award-prev { left: 8px; }
+.award-next { right: 8px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .awards-carousel { scroll-behavior: auto; }
+  .award-card { transition: none; }
+}
 
     /* =====================================
        SECTION 4: RESEARCH INTERESTS
@@ -528,8 +545,19 @@
       }
 
       .awards-carousel {
-        grid-auto-columns: 85%;
-      }
+  padding: 24px 11% 34px;
+}
+
+.award-card {
+  flex-basis: 78%;
+}
+
+.award-arrow {
+  width: 38px;
+  height: 38px;
+  margin-top: -19px;
+  font-size: 24px;
+}
 
       .dashboard-panel {
         padding: 19px;
@@ -789,7 +817,11 @@
         </p>
       </div>
 
-      <div class="awards-carousel">
+      <div class="awards-viewport">
+
+  <button class="award-arrow award-prev" type="button" aria-label="Previous award">&#8249;</button>
+
+  <div class="awards-carousel" id="awards-carousel">
 
   <article class="award-card">
     <div class="award-photo">
@@ -870,6 +902,9 @@
       <p>Badhan, Bangladesh Agricultural University · 2023</p>
     </div>
   </article>
+
+</div>
+        <button class="award-arrow award-next" type="button" aria-label="Next award">&#8250;</button>
 
 </div>
     </section>
@@ -961,7 +996,51 @@
   <!-- EXISTING BLOG SCRIPT -->
   <script src="assets/site.js"></script>
 <script>
-  renderRecentBlogList('home-posts', 5);
+(function () {
+  var track = document.getElementById('awards-carousel');
+  if (!track) return;
+
+  var cards = Array.prototype.slice.call(track.querySelectorAll('.award-card'));
+  var prev = document.querySelector('.award-prev');
+  var next = document.querySelector('.award-next');
+  var ticking = false;
+
+  function update() {
+    var center = track.scrollLeft + track.clientWidth / 2;
+
+    cards.forEach(function (card) {
+      var cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      var distance = Math.abs(center - cardCenter) / (card.offsetWidth + 18);
+      var ratio = Math.min(distance, 2);
+
+      card.style.transform = 'scale(' + (1 - ratio * 0.1) + ')';
+      card.style.opacity = 1 - ratio * 0.25;
+    });
+
+    prev.disabled = track.scrollLeft <= 5;
+    next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 5;
+  }
+
+  function step(direction) {
+    track.scrollBy({ left: direction * (cards[0].offsetWidth + 18), behavior: 'smooth' });
+  }
+
+  track.addEventListener('scroll', function () {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(function () {
+        update();
+        ticking = false;
+      });
+    }
+  });
+
+  prev.addEventListener('click', function () { step(-1); });
+  next.addEventListener('click', function () { step(1); });
+  window.addEventListener('resize', update);
+  window.addEventListener('load', update);
+  update();
+})();
 </script>
 
 </body>
