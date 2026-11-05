@@ -1035,29 +1035,86 @@
   var track = document.getElementById('awards-carousel');
   if (!track) return;
 
-  var cards = Array.prototype.slice.call(track.querySelectorAll('.award-card'));
+  var originals = Array.prototype.slice.call(track.querySelectorAll('.award-card'));
+  var N = originals.length;
+  if (N < 2) return;
+
   var prev = document.querySelector('.award-prev');
   var next = document.querySelector('.award-next');
+  var gap = 18;
+  var shrink = 0.16;   // how much each step away from the center shrinks a card (try 0.12 to 0.22)
   var ticking = false;
+  var settleTimer = null;
+  var reduceMotion = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Add one full copy of the cards before and after the real ones
+  function makeCopy() {
+    var frag = document.createDocumentFragment();
+    originals.forEach(function (card) {
+      var copy = card.cloneNode(true);
+      copy.setAttribute('aria-hidden', 'true');
+      frag.appendChild(copy);
+    });
+    return frag;
+  }
+
+  track.insertBefore(makeCopy(), track.firstChild);
+  track.appendChild(makeCopy());
+
+  var cards = Array.prototype.slice.call(track.querySelectorAll('.award-card'));
+
+  function setWidth() {
+    return cards[N].offsetLeft - cards[0].offsetLeft;
+  }
+
+  // Run a scroll change instantly, with no animation and no snapping
+  function instant(change) {
+    track.style.scrollBehavior = 'auto';
+    track.style.scrollSnapType = 'none';
+    change();
+    void track.offsetWidth;
+    track.style.scrollSnapType = '';
+    track.style.scrollBehavior = '';
+  }
+
+  function centerOn(card) {
+    track.scrollLeft = card.offsetLeft + card.offsetWidth / 2 - track.clientWidth / 2;
+  }
 
   function update() {
     var center = track.scrollLeft + track.clientWidth / 2;
 
     cards.forEach(function (card) {
       var cardCenter = card.offsetLeft + card.offsetWidth / 2;
-      var distance = Math.abs(center - cardCenter) / (card.offsetWidth + 18);
+      var distance = Math.abs(center - cardCenter) / (card.offsetWidth + gap);
       var ratio = Math.min(distance, 2);
 
-      card.style.transform = 'scale(' + (1 - ratio * 0.1) + ')';
+      card.style.transform = 'scale(' + (1 - ratio * shrink) + ')';
       card.style.opacity = 1 - ratio * 0.25;
     });
+  }
 
-    prev.disabled = track.scrollLeft <= 5;
-    next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 5;
+  // When scrolling stops inside a copy, jump back to the same card in the middle set
+  function wrap() {
+    var width = setWidth();
+    var center = track.scrollLeft + track.clientWidth / 2;
+    var startEdge = cards[N].offsetLeft - gap / 2;
+    var endEdge = cards[2 * N].offsetLeft - gap / 2;
+
+    if (center < startEdge) {
+      instant(function () { track.scrollLeft += width; });
+    } else if (center >= endEdge) {
+      instant(function () { track.scrollLeft -= width; });
+    }
+    update();
   }
 
   function step(direction) {
-    track.scrollBy({ left: direction * (cards[0].offsetWidth + 18), behavior: 'smooth' });
+    track.scrollBy({
+      left: direction * (cards[0].offsetWidth + gap),
+      behavior: reduceMotion ? 'auto' : 'smooth'
+    });
   }
 
   track.addEventListener('scroll', function () {
@@ -1068,12 +1125,20 @@
         ticking = false;
       });
     }
+    clearTimeout(settleTimer);
+    settleTimer = setTimeout(wrap, 140);
   });
 
   prev.addEventListener('click', function () { step(-1); });
   next.addEventListener('click', function () { step(1); });
-  window.addEventListener('resize', update);
-  window.addEventListener('load', update);
+
+  window.addEventListener('resize', function () {
+    instant(function () { centerOn(cards[N]); });
+    update();
+  });
+
+  // Start with the first real award centered
+  instant(function () { centerOn(cards[N]); });
   update();
 })();
 </script>
