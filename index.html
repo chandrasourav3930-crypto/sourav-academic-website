@@ -531,29 +531,26 @@
        RESPONSIVE DESIGN
     ===================================== */
 
-    @media (max-width: 1050px) {
+   @media (max-width: 1050px) {
       .dashboard {
         grid-template-columns: 1fr 1fr;
       }
 
       .profile-panel {
-  grid-column: auto;
-  grid-row: auto;
-  order: -1;
-}
+        grid-column: 1 / -1;
+        grid-row: 1;
+      }
 
       .dashboard-panel {
         padding: 19px;
       }
     }
 
-   @media (max-width: 650px) {
-    .profile-photo {
-  width: 170px;
-  height: 170px;
-}
+    @media (max-width: 650px) {
+      .home-wrap {
+        width: calc(100% - 28px);
       }
-    
+
       .home-section {
         margin-top: 35px;
         margin-bottom: 40px;
@@ -567,6 +564,12 @@
       .profile-panel {
         grid-column: auto;
         grid-row: auto;
+        order: -1;
+      }
+
+      .profile-photo {
+        width: 170px;
+        height: 170px;
       }
 
       .interest-grid {
@@ -584,19 +587,19 @@
       }
 
       .awards-carousel {
-  padding: 24px 11% 34px;
-}
+        padding: 24px calc(50% - 36vw) 34px;
+      }
 
-.award-card {
-  flex-basis: 78%;
-}
+      .award-card {
+        flex-basis: 72vw;
+      }
 
-.award-arrow {
-  width: 38px;
-  height: 38px;
-  margin-top: -19px;
-  font-size: 24px;
-}
+      .award-arrow {
+        width: 38px;
+        height: 38px;
+        margin-top: -19px;
+        font-size: 24px;
+      }
 
       .dashboard-panel {
         padding: 19px;
