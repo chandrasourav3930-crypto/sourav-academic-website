@@ -273,39 +273,36 @@
     ===================================== */
 
     .collaboration-carousel {
-      display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: 210px;
-      gap: 20px;
-      overflow-x: auto;
-      padding: 5px 4px 18px;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: thin;
-    }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 5px 4px 18px;
+}
 
-    .collaboration-card {
-      min-height: 170px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      padding: 20px;
-      background: #ffffff;
-      border: 1px solid #e3e9ef;
-      border-radius: 12px;
-      text-align: center;
-      text-decoration: none;
-      scroll-snap-align: start;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+.collaboration-card {
+  width: 210px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 22px 16px;
+  background: #ffffff;
+  border: 1px solid #e3e9ef;
+  border-radius: 12px;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-    .collaboration-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(20, 45, 75, 0.10);
-    }
+.collaboration-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(20, 45, 75, 0.10);
+}
 
-    .institution-mark {
+.institution-mark {
   width: 100%;
   height: 80px;
   display: flex;
@@ -314,9 +311,11 @@
 }
 
 .institution-mark img {
-  max-width: 100%;
-  max-height: 100%;
+  display: block;
+  width: 150px;
+  height: 70px;
   object-fit: contain;
+  object-position: center;
 }
 
     .collaboration-card strong {
@@ -494,7 +493,7 @@
       }
     }
 
-    @media (max-width: 650px) {
+   @media (max-width: 650px) {
       .home-wrap {
         width: calc(100% - 28px);
       }
@@ -518,8 +517,14 @@
         grid-template-columns: 1fr;
       }
 
-      .collaboration-carousel {
-        grid-auto-columns: 175px;
+      .collaboration-card {
+        width: calc(50% - 10px);
+        padding: 18px 10px;
+      }
+
+      .institution-mark img {
+        width: 100%;
+        max-width: 130px;
       }
 
       .awards-carousel {
