@@ -614,7 +614,94 @@
       border-radius: 3px;
       background: #a8d8cc;
     }
-    
+
+
+        /* =====================================
+       FEATURED PROJECT
+    ===================================== */
+
+    .project-feature {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 34px 38px;
+      border-radius: 13px;
+      background: linear-gradient(130deg, #183653, #24476a 70%, #2f5b86);
+      box-shadow: 0 6px 22px rgba(20, 45, 75, 0.16);
+    }
+
+    .project-feature-text {
+      max-width: 700px;
+    }
+
+    .project-feature-text h3 {
+      margin: 0 0 4px;
+      font-size: 24px;
+      color: #ffffff;
+    }
+
+    .project-feature-text p {
+      margin: 0;
+      color: #d7e3ee;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .project-feature-text .project-tagline {
+      margin-bottom: 12px;
+      color: #a8d8cc;
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .project-tag {
+      padding: 5px 11px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 20px;
+      color: #e6eef6;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .project-feature-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .project-button {
+      display: block;
+      padding: 12px 26px;
+      border: 1px solid #ffffff;
+      border-radius: 7px;
+      background: #ffffff;
+      color: #183653;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      transition: transform 0.2s ease;
+    }
+
+    .project-button:hover {
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    .project-button-light {
+      background: transparent;
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.45);
+    }
     
     /* =====================================
        RESPONSIVE DESIGN
@@ -700,6 +787,13 @@
 
       .dashboard-panel {
         padding: 19px;
+      }
+
+            .project-feature {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 22px;
+        padding: 26px 22px;
       }
     }
 
