@@ -61,5 +61,59 @@
     "body": "<p>CRISPR-based tools use guide molecules to direct a protein, such as Cas9, to a selected nucleic-acid sequence. Depending on the system, researchers can disrupt a gene, alter a sequence, or regulate gene expression. Careful controls are essential: editing efficiency varies, unintended changes are possible, and observed phenotypes should be validated using independent methods.</p>",
     "slug": "post-7",
     "date": "2026-10-24"
+  },
+  {
+    "title": "Beyond DNA Sequencing: How Multi-Omics Is Transforming Modern Biomedical Research",
+    "category": "Molecular Biology",
+    "summary": "Discover how genomics, transcriptomics, proteomics, and metabolomics work together to reveal biological mechanisms that cannot be understood through a single layer of molecular information. Discuss applications in infectious diseases, cancer research, and precision medicine.",
+    "symbol": "DNA",
+    "body": "<p></p>",
+    "slug": "dna-sequencing-biomedical-research",
+    "date": "2026-11-15"
+  },
+  {
+    "title": "Single-Cell RNA Sequencing: Exploring Cancer One Cell at a Time",
+    "category": "Molecular Biology",
+    "summary": "Traditional bulk RNA sequencing averages gene expression across millions of cells, potentially masking important biological differences. Introduce single-cell RNA sequencing, cellular heterogeneity, immune cell profiling, and its applications in understanding tumor microenvironments and treatment resistance.",
+    "symbol": "RNA",
+    "body": "<p></p>",
+    "slug": "rna-sequencing",
+    "date": "2026-11-05"
+  },
+  {
+    "title": "From Gene Expression to Protein Function: Why Transcriptomics Alone Is Not Enough",
+    "category": "Proteiomics",
+    "summary": "RNA abundance does not always predict protein abundance or biological activity. Explain how integrating RNA sequencing, quantitative proteomics, and functional validation can provide a more complete understanding of disease mechanisms and therapeutic responses.",
+    "symbol": "OMICS",
+    "body": "<p></p>",
+    "slug": "protein-function",
+    "date": "2026-11-09"
+  },
+  {
+    "title": "Spatial Biology: Understanding Where Genes, Proteins, and Cells Interact",
+    "category": "Molecular Biology",
+    "summary": "Biological systems are not just collections of molecules; their spatial organization matters. Introduce spatial transcriptomics, spatial proteomics, and multiplex imaging, highlighting how these technologies reveal cellular interactions within tumors and infected tissues.",
+    "symbol": "SP",
+    "body": "<p></p>",
+    "slug": "spatial-biology",
+    "date": "2026-11-13"
+  },
+  {
+    "title": "Artificial Intelligence in Modern Biology: From Predicting Proteins to Discovering New Therapeutics",
+    "category": "Artificial Intelligence",
+    "summary": "Examine how machine learning and AI are transforming biological research, including protein structure prediction, drug discovery, genomic interpretation, biomarker identification, and multi-omics data integration. Also discuss the limitations of AI-driven biological predictions and the importance of experimental validation.",
+    "symbol": "AI",
+    "body": "<p></p>",
+    "slug": "artifical-intelligence-biology",
+    "date": "2026-11-08"
+  },
+  {
+    "title": "The Future of Precision Medicine: Integrating Genomics, Immunology, and Systems Biology",
+    "category": "Genomics",
+    "summary": "Explore how patient-specific molecular information can guide disease diagnosis, treatment selection, and therapeutic monitoring. Discuss the integration of genomic variants, gene expression, protein biomarkers, immune profiling, and computational biology to advance personalized medicine.",
+    "symbol": "OMICS",
+    "body": "<p></p>",
+    "slug": "precision-medicine",
+    "date": "2026-11-15"
   }
 ]
