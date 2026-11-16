@@ -61,14 +61,5 @@
     "body": "<p>CRISPR-based tools use guide molecules to direct a protein, such as Cas9, to a selected nucleic-acid sequence. Depending on the system, researchers can disrupt a gene, alter a sequence, or regulate gene expression. Careful controls are essential: editing efficiency varies, unintended changes are possible, and observed phenotypes should be validated using independent methods.</p>",
     "slug": "post-7",
     "date": "2026-10-24"
-  },
-  {
-    "title": "From a scientific result to a reproducible figure",
-    "category": "Research Practice",
-    "summary": "Good figures make the experiment, comparison, uncertainty, and biological message easier to evaluate.",
-    "symbol": "DATA",
-    "body": "<p>A clear scientific figure should make the experimental groups, sample sizes, measurements, and statistical comparisons understandable without requiring readers to reconstruct the analysis. Choose a plot that matches the data, show individual observations when useful, and report uncertainty honestly. Keep the figure legend specific about methods and tests. Reproducible figures also depend on preserving analysis scripts, raw data, and a record of processing decisions.</p>",
-    "slug": "post-8",
-    "date": "2026-10-24"
   }
 ]
