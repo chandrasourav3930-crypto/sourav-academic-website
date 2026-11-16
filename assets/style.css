@@ -1,4 +1,4 @@
-Claude
+
 Style · CSS
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
  
@@ -735,6 +735,16 @@ main {
 /* =====================================
    BLOG LISTING PAGE
 ===================================== */
+
+.blog-heading {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.blog-heading h2,
+.blog-heading p {
+  text-align: center;
+}
 
 .blog-main {
   width: min(1200px, calc(100% - 48px));
