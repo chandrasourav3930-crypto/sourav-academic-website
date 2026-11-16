@@ -166,9 +166,8 @@ async function renderPost() {
 // Format the body of a blog post into paragraphs
 function formatBody(body) {
   return String(body)
-    .split(/\n\s*\n/)
-    .map(paragraph => `
-      <p>${esc(paragraph).replace(/\n/g, '<br>')}</p>
-    `)
-    .join('');
+    .replace(/\r\n/g, '\n')
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '')
+    .trim();
 }
