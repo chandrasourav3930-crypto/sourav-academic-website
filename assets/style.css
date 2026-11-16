@@ -731,5 +731,257 @@ main {
   }
 }
 
-Claude finished the response
+
+/* =====================================
+   BLOG LISTING PAGE
+===================================== */
+
+.blog-main {
+  width: min(1200px, calc(100% - 48px));
+  margin: 0 auto;
+  padding-top: 45px;
+}
+
+.blog-heading {
+  margin-bottom: 28px;
+}
+
+.blog-heading h2 {
+  margin-bottom: 8px;
+}
+
+.blog-heading p {
+  color: var(--muted);
+  margin: 0;
+  font-size: .95rem;
+}
+
+/* Three columns on desktop */
+
+.blog-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+.blog-grid .card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.blog-grid .card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.blog-grid .card-body .read {
+  margin-top: auto;
+  padding-top: 14px;
+}
+
+.blog-grid .cover {
+  height: 185px;
+}
+
+.blog-grid .cover-image {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.blog-grid .card h3 {
+  font-size: 1.08rem;
+  line-height: 1.4;
+  margin: 12px 0 8px;
+}
+
+.blog-grid .card p {
+  line-height: 1.65;
+}
+
+/* Two columns on tablets */
+
+@media (max-width: 900px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+/* One column on phones */
+
+@media (max-width: 580px) {
+  .blog-main {
+    width: calc(100% - 30px);
+    padding-top: 30px;
+  }
+
+  .blog-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .blog-grid .cover {
+    height: 190px;
+  }
+}
+
+
+/* =====================================
+   INDIVIDUAL BLOG ARTICLE PAGE
+===================================== */
+
+.article-main {
+  width: min(1200px, calc(100% - 64px));
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 0 75px;
+}
+
+.blog-article {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* Article title */
+
+.blog-article .page-title {
+  font-family: Manrope, sans-serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.25;
+  margin: 18px 0 12px;
+  color: var(--ink);
+}
+
+/* Article introduction and metadata */
+
+.blog-article > p {
+  color: #344f54;
+  font-size: 1.02rem;
+  line-height: 1.85;
+}
+
+.blog-article > .small {
+  color: var(--muted);
+  font-size: .88rem;
+}
+
+/* Article cover image */
+
+.blog-article .post-cover-image {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin: 25px 0 32px;
+}
+
+/* Article body */
+
+.blog-article .post-body {
+  width: 100%;
+  max-width: 100%;
+  color: #344f54;
+  font-size: 1.04rem;
+  line-height: 1.9;
+}
+
+.blog-article .post-body p {
+  text-align: justify;
+  text-justify: inter-word;
+  margin: 0 0 20px;
+  line-height: 1.9;
+}
+
+.blog-article .post-body h2 {
+  font: 700 1.65rem/1.35 Manrope, sans-serif;
+  color: var(--ink);
+  margin: 38px 0 15px;
+}
+
+.blog-article .post-body h3 {
+  font: 700 1.3rem/1.4 Manrope, sans-serif;
+  color: var(--ink);
+  margin: 30px 0 12px;
+}
+
+.blog-article .post-body ul,
+.blog-article .post-body ol {
+  padding-left: 28px;
+  margin: 12px 0 22px;
+  line-height: 1.85;
+}
+
+.blog-article .post-body li {
+  margin-bottom: 7px;
+}
+
+.blog-article .post-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 18px 0;
+}
+
+.blog-article .post-body blockquote {
+  border-left: 4px solid var(--teal);
+  margin: 24px 0;
+  padding: 12px 22px;
+  background: #edf6f1;
+  border-radius: 0 10px 10px 0;
+  color: #355752;
+}
+
+.blog-article .post-body a {
+  text-decoration: underline;
+}
+
+.blog-article .post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: .92rem;
+}
+
+.blog-article .post-body th,
+.blog-article .post-body td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.blog-article .post-body th {
+  background: #eaf4ef;
+  color: var(--ink);
+}
+
+/* Mobile article layout */
+
+@media (max-width: 650px) {
+  .article-main {
+    width: calc(100% - 32px);
+    padding: 30px 0 50px;
+  }
+
+  .blog-article .post-body {
+    font-size: .98rem;
+    line-height: 1.8;
+  }
+
+  .blog-article .post-body p {
+    line-height: 1.8;
+  }
+
+  .blog-article .post-body h2 {
+    font-size: 1.4rem;
+    margin-top: 30px;
+  }
+
+  .blog-article .post-body h3 {
+    font-size: 1.18rem;
+  }
+}
+
 
