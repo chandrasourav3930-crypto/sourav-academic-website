@@ -995,3 +995,27 @@ main {
 }
 
 
+/* BLOG ARTICLE METADATA */
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 8px 0 20px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.view-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--teal);
+  font-weight: 600;
+}
+
+.view-count span {
+  font-size: 1rem;
+}
+
