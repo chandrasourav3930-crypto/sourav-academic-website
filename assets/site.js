@@ -33,13 +33,13 @@ async function incrementPostView(slug) {
     return Number(views);
 
   } catch (error) {
-    console.error('Could not update blog views:', error);
+    console.error('Could not update  views:', error);
     return null;
   }
 }
 
 
-// Retrieve total views for multiple blog posts
+// Retrieve total views for multiple  posts
 async function getPostViews(slugs) {
   if (!slugs.length) return {};
 
@@ -70,13 +70,13 @@ async function getPostViews(slugs) {
     );
 
   } catch (error) {
-    console.error('Could not retrieve blog views:', error);
+    console.error('Could not retrieve  views:', error);
     return {};
   }
 }
 
 
-// Load all blog posts from posts.json
+// Load all  posts from posts.json
 async function loadPosts() {
   const response = await fetch('posts.json');
 
@@ -100,14 +100,14 @@ function esc(s = '') {
 }
 
 
-// Generate the URL for an individual blog post
+// Generate the URL for an individual  post
 function postUrl(p) {
   return `post.html?slug=${encodeURIComponent(p.slug)}`;
 }
 
 
-// Display blog posts as full cards
-// Used on blog.html
+// Display  posts as full cards
+// Used on .html
 function renderCards(id, limit = 99) {
   loadPosts()
     .then(posts => {
@@ -141,15 +141,17 @@ function renderCards(id, limit = 99) {
       `).join('');
     })
     .catch(error => {
-      console.error('Could not load blog cards:', error);
+      console.error('Could not load  cards:', error);
     });
 }
 
 
-// Display recent blog posts as a compact list
+// Display recent  posts as a compact list
 // Used on the homepage
 
-async function renderRecentBlogList(id, limit = 5) {
+
+
+async function renderRecentList(id, limit = 5) {
   const el = document.getElementById(id);
   if (!el) return;
 
@@ -165,28 +167,29 @@ async function renderRecentBlogList(id, limit = 5) {
       <div class="recent-publication">
         <div class="recent-publication-info">
           <a href="${postUrl(p)}">${esc(p.title)}</a>
-          ${
-            p.date
-              ? `<span class="small">${esc(p.date)}</span>`
-              : ''
-          }
-        </div>
 
-        <span class="recent-blog-views" title="Total article views">
-          <span aria-hidden="true">◉</span>
-          ${(viewCounts[p.slug] || 0).toLocaleString()} views
-        </span>
+          <div class="recent-blog-meta">
+            <span class="small">${esc(p.date || '')}</span>
+
+            <span class="recent--views" title="Total article views">
+              <span aria-hidden="true">◉</span>
+              ${(viewCounts[p.slug] || 0).toLocaleString()} views
+            </span>
+          </div>
+        </div>
       </div>
     `).join('');
 
   } catch (error) {
-    console.error('Could not load recent blogs:', error);
+    console.error('Could not load recent posts:', error);
   }
 }
 
 
 
-// Display an individual blog post
+
+
+// Display an individual  post
 // Used on post.html
 
 async function renderPost() {
@@ -197,7 +200,7 @@ async function renderPost() {
 
   if (!slug) {
     root.innerHTML =
-      '<h1>Post not found</h1><p>Choose an article from the blog.</p>';
+      '<h1>Post not found</h1><p>Choose an article from the .</p>';
     return;
   }
 
