@@ -1,4 +1,44 @@
 
+
+// ========================================
+// SUPABASE BLOG VIEW COUNTER
+// ========================================
+
+const SUPABASE_URL = 'https://bbcqaqyapokhjmjgyaxl.supabase.co';
+
+const SUPABASE_PUBLISHABLE_KEY =
+  'sb_publishable_Kt23qSsokM8SI3Z-n3WJ7A_Os12ftHb';
+
+// Increment the view count for a blog post
+async function incrementPostView(slug) {
+  try {
+    const response = await fetch(
+      `${SUPABASE_URL}/rest/v1/rpc/increment_post_view`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_PUBLISHABLE_KEY,
+          'Authorization': `Bearer ${SUPABASE_PUBLISHABLE_KEY}`
+        },
+        body: JSON.stringify({ post_slug: slug })
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Supabase error: ${response.status}`);
+    }
+
+    const views = await response.json();
+    return Number(views);
+
+  } catch (error) {
+    console.error('Could not update blog views:', error);
+    return null;
+  }
+}
+
+
 // Load all blog posts from posts.json
 async function loadPosts() {
   const response = await fetch('posts.json');
@@ -96,6 +136,7 @@ function renderRecentBlogList(id, limit = 5) {
 
 // Display an individual blog post
 // Used on post.html
+
 async function renderPost() {
   const root = document.getElementById('post-content');
   if (!root) return;
@@ -103,10 +144,8 @@ async function renderPost() {
   const slug = new URLSearchParams(location.search).get('slug');
 
   if (!slug) {
-    root.innerHTML = `
-      <h1>Post not found</h1>
-      <p>Choose an article from the blog.</p>
-    `;
+    root.innerHTML =
+      '<h1>Post not found</h1><p>Choose an article from the blog.</p>';
     return;
   }
 
@@ -115,22 +154,25 @@ async function renderPost() {
     const p = posts.find(x => x.slug === slug);
 
     if (!p) {
-      root.innerHTML = `
-        <h1>Post not found</h1>
-        <p>This article may have moved or been removed.</p>
-      `;
+      root.innerHTML =
+        '<h1>Post not found</h1><p>This article may have moved or been removed.</p>';
       return;
     }
 
     document.title = `${p.title} | Sourav Chakraborty`;
 
+    // Increment the view count
+    const views = await incrementPostView(slug);
+
+    // Display the article
     root.innerHTML = `
       <a href="blog.html">← Back to blog</a>
 
-      ${
-        p.cover
-          ? `<img class="post-cover-image" src="${esc(p.cover)}" alt="${esc(p.title)} cover image">`
-          : `<div class="post-hero">${esc(p.symbol || 'BIO')}</div>`
+      ${p.cover
+        ? `<img class="post-cover-image"
+             src="${esc(p.cover)}"
+             alt="${esc(p.title)} cover image">`
+        : `<div class="post-hero">${esc(p.symbol || 'BIO')}</div>`
       }
 
       <span class="tag">${esc(p.category || 'Science')}</span>
@@ -139,7 +181,14 @@ async function renderPost() {
         ${esc(p.title)}
       </h1>
 
-      <p class="small">${esc(p.date || 'Science note')}</p>
+      <div class="article-meta">
+        <span>${esc(p.date || 'Science note')}</span>
+        <span class="view-count">
+          <span aria-hidden="true">◉</span>
+          ${views === null ? 'Views unavailable' :
+            `${views.toLocaleString()} views`}
+        </span>
+      </div>
 
       <p>${esc(p.summary || '')}</p>
 
@@ -153,14 +202,12 @@ async function renderPost() {
     `;
 
   } catch (error) {
-    console.error('Could not load individual post:', error);
-
-    root.innerHTML = `
-      <h1>Unable to load this post</h1>
-      <p>Please return to the blog and try again.</p>
-    `;
+    console.error(error);
+    root.innerHTML =
+      '<h1>Unable to load this post</h1><p>Please return to the blog and try again.</p>';
   }
 }
+
 
 
 // Format the body of a blog post into paragraphs
