@@ -151,7 +151,7 @@ function renderCards(id, limit = 99) {
 
 
 
-async function renderRecentList(id, limit = 5) {
+async function renderRecentBlogList(id, limit = 5) {
   const el = document.getElementById(id);
   if (!el) return;
 
