@@ -1051,3 +1051,38 @@ main {
 }
 
 
+/* RECENT BLOG DATE AND VIEW COUNT ON SAME LINE */
+
+.recent-publication-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+}
+
+.recent-blog-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 5px;
+}
+
+.recent-blog-meta .small {
+  margin: 0;
+}
+
+.recent--views {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.recent--views span {
+  color: var(--teal);
+}
+
