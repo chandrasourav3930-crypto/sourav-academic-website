@@ -39,6 +39,43 @@ async function incrementPostView(slug) {
 }
 
 
+// Retrieve total views for multiple blog posts
+async function getPostViews(slugs) {
+  if (!slugs.length) return {};
+
+  try {
+    const params = new URLSearchParams({
+      select: 'slug,views',
+      slug: `in.(${slugs.map(s => `"${s}"`).join(',')})`
+    });
+
+    const response = await fetch(
+      `${SUPABASE_URL}/rest/v1/post_views?${params}`,
+      {
+        headers: {
+          'apikey': SUPABASE_PUBLISHABLE_KEY,
+          'Authorization': `Bearer ${SUPABASE_PUBLISHABLE_KEY}`
+        }
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Supabase error: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    return Object.fromEntries(
+      data.map(item => [item.slug, Number(item.views)])
+    );
+
+  } catch (error) {
+    console.error('Could not retrieve blog views:', error);
+    return {};
+  }
+}
+
+
 // Load all blog posts from posts.json
 async function loadPosts() {
   const response = await fetch('posts.json');
@@ -111,14 +148,22 @@ function renderCards(id, limit = 99) {
 
 // Display recent blog posts as a compact list
 // Used on the homepage
-function renderRecentBlogList(id, limit = 5) {
-  loadPosts()
-    .then(posts => {
-      const el = document.getElementById(id);
-      if (!el) return;
 
-      el.innerHTML = posts.slice(0, limit).map(p => `
-        <div class="recent-publication">
+async function renderRecentBlogList(id, limit = 5) {
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  try {
+    const posts = await loadPosts();
+    const recentPosts = posts.slice(0, limit);
+
+    const viewCounts = await getPostViews(
+      recentPosts.map(p => p.slug)
+    );
+
+    el.innerHTML = recentPosts.map(p => `
+      <div class="recent-publication">
+        <div class="recent-publication-info">
           <a href="${postUrl(p)}">${esc(p.title)}</a>
           ${
             p.date
@@ -126,12 +171,19 @@ function renderRecentBlogList(id, limit = 5) {
               : ''
           }
         </div>
-      `).join('');
-    })
-    .catch(error => {
-      console.error('Could not load recent blogs:', error);
-    });
+
+        <span class="recent-blog-views" title="Total article views">
+          <span aria-hidden="true">◉</span>
+          ${(viewCounts[p.slug] || 0).toLocaleString()} views
+        </span>
+      </div>
+    `).join('');
+
+  } catch (error) {
+    console.error('Could not load recent blogs:', error);
+  }
 }
+
 
 
 // Display an individual blog post
