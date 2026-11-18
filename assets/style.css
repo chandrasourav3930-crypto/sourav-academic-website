@@ -1019,3 +1019,35 @@ main {
   font-size: 1rem;
 }
 
+
+/* HOMEPAGE RECENT BLOG VIEW COUNTS */
+
+.recent-publication {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.recent-publication-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.recent-blog-views {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.recent-blog-views span {
+  color: var(--teal);
+}
+
+
